@@ -25,7 +25,11 @@ jobs:
       - name: init
         run: terraform init
 
-        
+      - name: list all files
+        run: ls -a
+
+
+
         
 
 
