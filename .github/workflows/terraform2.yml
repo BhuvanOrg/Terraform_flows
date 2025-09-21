@@ -6,10 +6,11 @@ name: Terraform
 on:
   push:
     branches:
-      - main 
+      - main
+
 
 env:
-  ROOT_PATH = '${{ github.workspace }}/src'
+  ROOT_PATH='${{ github.workspace }}/src'
 
 jobs:
   terraform-plan:
