@@ -10,7 +10,7 @@ on:
 
 
 env:
-  ROOT_PATH='${{ github.workspace }}/src'
+  ROOT_PATH=${{ github.workspace }}/src
 
 jobs:
   terraform-plan:
