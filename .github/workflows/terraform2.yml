@@ -9,9 +9,6 @@ on:
       - main
 
 
-env:
-  ROOT_PATH=${{ github.workspace }}/src
-
 jobs:
   terraform-plan:
     name: Terraform
@@ -29,12 +26,12 @@ jobs:
 
       - name: init
         run: terraform init 
-        working-directory: ${{env.ROOT_PATH}}
+        working-directory: ${{ github.workspace }}/src
 
 
       - name: plan
         run: terraform plan
-        working-directory: ${{env.ROOT_PATH}}
+        working-directory: ${{ github.workspace }}/src
 
 
 
