@@ -1,6 +1,5 @@
 
-env:
-  ROOT_PATH = ${{github.workspace}}/src
+
 
 name: Terraform
 
@@ -9,6 +8,8 @@ on:
     branches:
       - main 
 
+env:
+  ROOT_PATH = ${{ github.workspace }}/src
 
 jobs:
   terraform-plan:
