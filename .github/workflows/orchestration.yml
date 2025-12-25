@@ -3,12 +3,13 @@ on:
   workflow_dispatch:
     inputs:
       environment: 
+        description: choose the envrionemt
+        type: string
+        required: true
+        options:
         - tst
         - acc
         - prd
-        # description: choose the envrionemt
-        # type: string
-        # required: true
   
 
 jobs:
