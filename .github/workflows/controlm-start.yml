@@ -1,6 +1,6 @@
 name: start-services
 on: 
-  workflow_call
+  workflow_call:
     inputs:
       environment:
         description: environment varaibles
