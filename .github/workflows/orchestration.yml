@@ -20,7 +20,7 @@ jobs:
 
 
   Apply-Patching:
-    uses: ./github/workflows/patching.yml
+    uses: ./.github/workflows/patching.yml
     with:
       environment: ${{ inputs.environment }}
 
