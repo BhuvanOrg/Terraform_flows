@@ -28,4 +28,14 @@ jobs:
       - name: Greeter
         run: echo "Hi Welcome"
 
+      - name: show vars
+        run: echo "${{ vars.NAME }}"
+
+  start-service:
+    needs: Apply-Patching
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.environment }}
+    steps:
+      - name: start
+        run: echo "starting all services"
       
