@@ -20,4 +20,11 @@ jobs:
       - name: show vars
         run: echo "${{ vars.NAME }}"
 
+  Apply-Patching:
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.environment }}
+    steps:
+      - name: Greeter
+        run: echo "Hi Welcome"
+
       
