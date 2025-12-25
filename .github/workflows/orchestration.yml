@@ -27,9 +27,7 @@ jobs:
 
   start-service:
     needs: Apply-Patching
-    runs-on: ubuntu-latest
-    environment: ${{ inputs.environment }}
-    steps:
-      - name: start
-        run: echo "starting all services"
+    uses: ./.github/workflows/controlm-start.yml
+    with:
+      environment: ${{ inputs.environment }}
       

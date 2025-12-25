@@ -1,4 +1,4 @@
-name: stop-services
+name: start-services
 on: 
   workflow_call
     inputs:
@@ -8,10 +8,10 @@ on:
         required: true
 
 jobs:
-  stop-service:
+  start-service:
     runs_on: ubuntu-latest
     environment: ${{ inputs.environment }}
 
     steps:
       - name: stop
-        run: echo "service stopped"
+        run: echo "service started"
