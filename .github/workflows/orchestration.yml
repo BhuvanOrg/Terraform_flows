@@ -28,7 +28,7 @@ jobs:
   start-service:
     needs: Apply-Patching
     runs-on: ubuntu-latest
-    environment: ${{ needs.Apply-Patching.environment }}
+    environment: ${{ inputs.environment }}
     steps:
       - name: start
         run: echo "starting all services"
