@@ -2,7 +2,7 @@ name: Orchestration
 on:
   workflow_dispatch:
     inputs:
-      environment:
+      environment: [test, acc, prd]
         description: choose the envrionemt
         type: string
         required: true
