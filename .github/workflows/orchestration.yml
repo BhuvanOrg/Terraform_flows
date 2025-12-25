@@ -2,10 +2,13 @@ name: Orchestration
 on:
   workflow_dispatch:
     inputs:
-      environment: [test, acc, prd]
-        description: choose the envrionemt
-        type: string
-        required: true
+      environment: 
+        - tst
+        - acc
+        - prd
+        # description: choose the envrionemt
+        # type: string
+        # required: true
   
 
 jobs:
