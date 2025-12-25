@@ -4,7 +4,7 @@ on:
     inputs:
       environment: 
         description: choose the envrionemt
-        type: string
+        type: choice
         required: true
         options:
         - tst
