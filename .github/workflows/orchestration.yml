@@ -7,10 +7,10 @@ on:
         type: choice
         required: true
         options:
-        - tst
-        - acc
-        - prd
-  
+          - tst
+          - acc
+          - prd
+    
 
 jobs:
   start-service:
