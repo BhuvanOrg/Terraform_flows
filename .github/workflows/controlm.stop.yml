@@ -1,0 +1,17 @@
+name: stop-services
+on: 
+  workflow_call
+    inputs:
+      environment:
+        description: environment varaibles
+        type: string
+        required: true
+
+jobs:
+  stop-service:
+    runs_on: ubuntu-latest
+    environment: ${{ inputs.environment }}
+
+    steps:
+      - name: stop
+        run: echo "service stopped"
