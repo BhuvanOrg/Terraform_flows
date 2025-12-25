@@ -1,37 +1,37 @@
 
 
 
-name: Terraform
+# name: Terraform
 
-on:
-  push:
-    branches:
-      - main
+# on:
+#   push:
+#     branches:
+#       - main
 
 
-jobs:
-  terraform-plan:
-    name: Terraform
-    runs-on: ubuntu-latest
-    environment: dev
+# jobs:
+#   terraform-plan:
+#     name: Terraform
+#     runs-on: ubuntu-latest
+#     environment: dev
 
-    steps:
-      - name: checkout
-        uses: actions/checkout@v4
+#     steps:
+#       - name: checkout
+#         uses: actions/checkout@v4
         
-      - name: setup terraform
-        uses: hashicorp/setup-terraform@v1
-        with:
-          cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
+#       - name: setup terraform
+#         uses: hashicorp/setup-terraform@v1
+#         with:
+#           cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
 
-      - name: init
-        run: terraform init 
-        working-directory: ${{ github.workspace }}/src
+#       - name: init
+#         run: terraform init 
+#         working-directory: ${{ github.workspace }}/src
 
 
-      - name: plan
-        run: terraform plan
-        working-directory: ${{ github.workspace }}/src
+#       - name: plan
+#         run: terraform plan
+#         working-directory: ${{ github.workspace }}/src
 
 
 
