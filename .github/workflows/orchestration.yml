@@ -23,7 +23,7 @@ jobs:
   Apply-Patching:
     needs: start-service
     runs-on: ubuntu-latest
-    environment: ${{ inputs.environment }}
+    environment: ${{ needs.start-service.environment }}
     steps:
       - name: Greeter
         run: echo "Hi Welcome"
