@@ -17,4 +17,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: show vars
-        run: echo "Hellpw world"
+        run: echo "${{ vars.NAME }}"
+
+      
