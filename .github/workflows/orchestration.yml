@@ -1,0 +1,10 @@
+name: Orchestration
+on:
+  workflow_dispatch:
+  
+
+jobs:
+  start-service:
+    steps:
+      - name: show vars
+        run: echo "Hellpw world"
