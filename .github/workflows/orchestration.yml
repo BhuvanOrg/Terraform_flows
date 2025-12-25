@@ -20,15 +20,9 @@ jobs:
 
 
   Apply-Patching:
-    needs: stop-service
-    runs-on: ubuntu-latest
-    environment: ${{ inputs.environment }}
-    steps:
-      - name: Greeter
-        run: echo "Hi Welcome"
-
-      - name: show vars
-        run: echo "${{ vars.NAME }}"
+    uses: ./github.workflows/patching.yml
+    with:
+      environment: ${{ inputs.environment }}
 
   start-service:
     needs: Apply-Patching
