@@ -14,16 +14,15 @@ on:
 
 jobs:
   stop-service:
-    runs-on: ubuntu-latest
-    environment: ${{ inputs.environment }}
-    steps:
-      - name: show vars
-        run: echo "${{ vars.NAME }}"
+    uses: ./.github/workflows/controlm-stop.yml
+    with:
+      environment: ${{ inputs.environment }}
+
 
   Apply-Patching:
     needs: stop-service
     runs-on: ubuntu-latest
-    environment: ${{ needs.stop-service.environment }}
+    environment: ${{ inputs.environment }}
     steps:
       - name: Greeter
         run: echo "Hi Welcome"
@@ -34,7 +33,7 @@ jobs:
   start-service:
     needs: Apply-Patching
     runs-on: ubuntu-latest
-    environment: ${{ inputs.environment }}
+    environment: ${{ needs.Apply-Patching.environment }}
     steps:
       - name: start
         run: echo "starting all services"
