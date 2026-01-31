@@ -13,21 +13,40 @@ on:
     
 
 jobs:
+
+  approval-gate:
+    runs-on: ubuntu-latest
+    environment: ${{ github.event.inputs.environment }}
+    outputs:
+      subscription_id: ${{ steps.vars.outputs.subscription_id }}
+    steps:
+      - name: Export environment variables
+        id: vars
+        run: |
+          echo "subscription_id=${{vars.AZURE_SUBSCRIPTION_ID }}" >> $GITHUB_OUTPUT
+
+      - name:
+        run: echo "Deployment approved"
+
+
+      
   stop-service:
+    needs: approval-gate
     uses: ./.github/workflows/controlm-stop.yml
     with:
       environment: ${{ inputs.environment }}
 
 
   Apply-Patching:
-    needs: stop-service
+    needs: [ approval-gate, stop-service ]
     uses: ./.github/workflows/patching.yml
     with:
       environment: ${{ inputs.environment }}
 
   start-service:
-    needs: Apply-Patching
+    needs: [ approval-gate, Apply-Patching ]
     uses: ./.github/workflows/controlm-start.yml
     with:
       environment: ${{ inputs.environment }}
+
       
