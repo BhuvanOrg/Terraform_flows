@@ -1,19 +1,18 @@
 name: Orchestration
+
 on:
   workflow_dispatch:
     inputs:
-      environment: 
-        description: choose the envrionemt
+      environment:
+        description: Choose the environment
         type: choice
         required: true
         options:
           - tst
           - acc
           - prd
-    
 
 jobs:
-
   approval-gate:
     runs-on: ubuntu-latest
     environment: ${{ github.event.inputs.environment }}
@@ -23,31 +22,25 @@ jobs:
       - name: Export environment variables
         id: vars
         run: |
-          echo "subscription_id=${{ vars.NAME }}" >> $GITHUB_OUTPUT
-      - name:
+          echo "subscription_id=${{ vars.NAME }}" >> "$GITHUB_OUTPUT"
+
+      - name: Deployment approved
         run: echo "Deployment approved"
 
-
-       
   stop-service:
     needs: approval-gate
     uses: ./.github/workflows/controlm-stop.yml
     with:
-      environment: ${{ inputs.environment }}
+      environment: ${{ github.event.inputs.environment }}
 
-
-  Apply-Patching:
-    needs: [ approval-gate, stop-service ]
+  apply-patching:
+    needs: [approval-gate, stop-service]
     uses: ./.github/workflows/patching.yml
     with:
-      environment: ${{ inputs.environment }}
+      environment: ${{ github.event.inputs.environment }}
 
   start-service:
-    needs: [ approval-gate, Apply-Patching ]
+    needs: [approval-gate, apply-patching]
     uses: ./.github/workflows/controlm-start.yml
     with:
-      environment: ${{ inputs.environment }}
-
-      
-
-
+      environment: ${{ github.event.inputs.environment }}
