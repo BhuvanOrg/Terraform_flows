@@ -24,12 +24,11 @@ jobs:
         id: vars
         run: |
           echo "subscription_id=${{ vars.NAME }}" >> $GITHUB_OUTPUT
-
       - name:
         run: echo "Deployment approved"
 
 
-      
+       
   stop-service:
     needs: approval-gate
     uses: ./.github/workflows/controlm-stop.yml
@@ -50,4 +49,5 @@ jobs:
       environment: ${{ inputs.environment }}
 
       
+
 
