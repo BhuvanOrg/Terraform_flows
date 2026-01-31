@@ -23,7 +23,7 @@ jobs:
       - name: Export environment variables
         id: vars
         run: |
-          echo "subscription_id=${{vars.AZURE_SUBSCRIPTION_ID }}" >> $GITHUB_OUTPUT
+          echo "subscription_id=${{ vars.NAME }}" >> $GITHUB_OUTPUT
 
       - name:
         run: echo "Deployment approved"
@@ -50,3 +50,4 @@ jobs:
       environment: ${{ inputs.environment }}
 
       
+
